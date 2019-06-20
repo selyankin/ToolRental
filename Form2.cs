@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using ToolsRental;
 
@@ -10,7 +11,6 @@ namespace ToolRental
         public Form2()
         {
             InitializeComponent();
-
 
             balanceLabel.Text = "0";
             discountLabel.Text = "0";
@@ -34,7 +34,7 @@ namespace ToolRental
             var month = issueDateLabel2.Text;
             var year = issueDateLabel3.Text;
 
-            if (CheckIssueDate(day, month, year))
+            if (!CheckIssueDate(day, month, year))
             {
                 return;
             }
@@ -65,12 +65,14 @@ namespace ToolRental
                 return;
             }
 
-            var client = new NaturalPerson(name, surname, patronymic, city, street, building, 
+            var client = new Client(name, surname, patronymic, city, street, building, 
                 apartment, sex, passport, issueDate, whoIssuedPassport, residenceAddress, 
                 note, discount, balance, deposit, cellPhone, email, officePhone, homePhone);
 
-            var db = new DBSQLClient();
-            db.AddData(client);
+            var db = new SQLiteClient();
+            db.Clients.Add(client);
+            db.SaveChanges();
+
             this.Hide();
         }
 
@@ -155,7 +157,7 @@ namespace ToolRental
             this.Hide();
         }
 
-        public void FillFields(NaturalPerson client)
+        public void FillFields(Client client)
         {
             nameLabel.Text = client.Name;
             surnameLabel.Text = client.Surname;
@@ -167,8 +169,6 @@ namespace ToolRental
             issueDateLabel1.Text = date[0];
             issueDateLabel2.Text = date[1];
             issueDateLabel3.Text = date[2];
-            
-           
 
             streetLabel.Text = client.Street;
             buildingLabel.Text = client.Building;
@@ -194,6 +194,11 @@ namespace ToolRental
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
         {
 
         }

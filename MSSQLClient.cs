@@ -4,13 +4,11 @@ using System.Data;
 using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToolsRental;
 
 namespace ToolRental
 {
-    class DBSQLClient
+    class MSSQLClient
     {
         public static SqlConnection GetDBConnection()
         {
@@ -27,7 +25,7 @@ namespace ToolRental
         /// Add client to database.
         /// </summary>
         /// <param name="client"></param>
-        public void AddData(NaturalPerson client)
+        public void AddData(Client client)
         {
             var sqlExpression = @"INSERT INTO Clients (Id, Name, Surname, Patronymic, Sex, City, Street,
 Building, Apartment, HomePhone, OfficePhone, CellPhone, Email, Deposit, Balance, Discount, Note, Passport, 
@@ -107,7 +105,7 @@ VALUES (@Id, @Name, @Surname, @Patronymic, @Sex, @City, @Street,
         {
             var sqlExpression = @"INSERT INTO Tools (Id, Name, Price, Note, PathToPicture) VALUES (@Id, @Name, @Price, @Note, @PathToPicture)";
 
-            using (var conn = DBSQLClient.GetDBConnection())
+            using (var conn = MSSQLClient.GetDBConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlExpression, conn);
@@ -146,7 +144,7 @@ VALUES (@Id, @Name, @Surname, @Patronymic, @Sex, @City, @Street,
         }
 
 
-        public IEnumerable<NaturalPerson> FindNaturalPersons(List<int> indexes)
+        public IEnumerable<Client> FindNaturalPersons(List<int> indexes)
         {
             var datasource = "RASPBERRY";
             var database = "toolrental";
@@ -155,7 +153,7 @@ VALUES (@Id, @Name, @Surname, @Patronymic, @Sex, @City, @Street,
 
             var db = new DataContext(connString);
 
-            var clients = db.GetTable<NaturalPerson>();
+            var clients = db.GetTable<Client>();
 
             return from c in clients
                 where indexes.Contains(c.Id)

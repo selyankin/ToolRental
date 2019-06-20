@@ -5,77 +5,55 @@ namespace ToolsRental
     /*
      * may be client have to field organization then he can add organization properties
      */
-    [Table(Name = "Clients")]
-    public sealed class NaturalPerson
+    public sealed class Client
     {
-        [Column]
         public string Name { get; private set; }
 
-        [Column]
         public string Surname { get; private set; }
 
-        [Column]
         public string Patronymic { get; private set; }
 
-        [Column]
         public string Sex { get; private set; }
 
-        [Column]
         public int Id { get; private set; }
 
-        [Column]
         public string City { get; private set; }
 
-        [Column]
         public string Street { get; private set; }
 
-        [Column]
         public string Building { get; private set; }
 
-        [Column]
         public string Apartment { get; private set; }
 
-        [Column]
         public string HomePhone { get; private set; }
 
-        [Column]
         public string OfficePhone { get; private set; }
 
-        [Column]
         public string CellPhone { get; private set; }
 
-        [Column]
         public string Email { get; private set; }
 
-        [Column]
         public bool Deposit { get; private set; }
 
-        [Column]
         public int Balance { get; private set; }
 
-        [Column]
         public int Discount { get; private set; }
 
-        [Column]
         public string Note { get; private set; }
 
-        [Column]
         public long Passport { get; private set; }
 
-        [Column]
         public string IssueDate { get; private set; }
 
-        [Column]
         public string WhoIssuedPassport { get; private set; }
 
-        [Column]
         public string ResidenceAddress { get; private set; }
 
-        public NaturalPerson() : this("", "", "", "", "", "", "", "Мужской", -1, "", "", "")
+        public Client() : this("", "", "", "", "", "", "", "Мужской", 0, "", "", "")
         {
         }
 
-        public NaturalPerson(string name, string surname, string patronymic, string city, 
+        public Client(string name, string surname, string patronymic, string city, 
             string street, string building, string apartment, string sex, long passport, string issueDate, 
             string whoIssuedPassport, string residenceAddress, string note = null, int discount = 0, int balance = 0, 
             bool deposit = false, string cellPhone = null, string email = null, string officePhone = null, string homePhone = null)
