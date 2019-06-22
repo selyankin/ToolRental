@@ -16,7 +16,12 @@ namespace ToolRental
 
         public IEnumerable<Client> FindClients(List<int> ids)
         {
-            return ids.Select(id => this.Clients.Find(id));
+            return ids.Select(id => Clients.Find(id));
+        }
+
+        public IEnumerable<Tool> FindTools(List<int> ids)
+        {
+            return ids.Select(id => Tools.Find(id));
         }
     }
 }

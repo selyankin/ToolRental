@@ -33,8 +33,10 @@
             this.инструментToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.addClient = new System.Windows.Forms.Button();
             this.editClient = new System.Windows.Forms.Button();
+            this.addClient = new System.Windows.Forms.Button();
+            this.tool_add = new System.Windows.Forms.Button();
+            this.tool_edit = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,6 +80,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tool_edit);
+            this.panel1.Controls.Add(this.tool_add);
             this.panel1.Controls.Add(this.editClient);
             this.panel1.Controls.Add(this.addClient);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -85,16 +89,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 38);
             this.panel1.TabIndex = 2;
-            // 
-            // addClient
-            // 
-            this.addClient.Location = new System.Drawing.Point(12, 3);
-            this.addClient.Name = "addClient";
-            this.addClient.Size = new System.Drawing.Size(30, 30);
-            this.addClient.TabIndex = 0;
-            this.addClient.Text = "+";
-            this.addClient.UseVisualStyleBackColor = true;
-            this.addClient.Click += new System.EventHandler(this.Button1_Click);
             // 
             // editClient
             // 
@@ -104,7 +98,37 @@
             this.editClient.TabIndex = 1;
             this.editClient.Text = "...";
             this.editClient.UseVisualStyleBackColor = true;
-            this.editClient.Click += new System.EventHandler(this.EditClient_Click);
+            this.editClient.Click += new System.EventHandler(this.Button_EditClient);
+            // 
+            // addClient
+            // 
+            this.addClient.Location = new System.Drawing.Point(12, 3);
+            this.addClient.Name = "addClient";
+            this.addClient.Size = new System.Drawing.Size(30, 30);
+            this.addClient.TabIndex = 0;
+            this.addClient.Text = "+";
+            this.addClient.UseVisualStyleBackColor = true;
+            this.addClient.Click += new System.EventHandler(this.Button_AddClient);
+            // 
+            // tool_add
+            // 
+            this.tool_add.Location = new System.Drawing.Point(12, 3);
+            this.tool_add.Name = "tool_add";
+            this.tool_add.Size = new System.Drawing.Size(30, 30);
+            this.tool_add.TabIndex = 2;
+            this.tool_add.Text = "+";
+            this.tool_add.UseVisualStyleBackColor = true;
+            this.tool_add.Click += new System.EventHandler(this.Button_AddTool);
+            // 
+            // tool_edit
+            // 
+            this.tool_edit.Location = new System.Drawing.Point(60, 3);
+            this.tool_edit.Name = "tool_edit";
+            this.tool_edit.Size = new System.Drawing.Size(30, 30);
+            this.tool_edit.TabIndex = 3;
+            this.tool_edit.Text = "...";
+            this.tool_edit.UseVisualStyleBackColor = true;
+            this.tool_edit.Click += new System.EventHandler(this.Button_EditTool);
             // 
             // Form1
             // 
@@ -136,6 +160,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button addClient;
         private System.Windows.Forms.Button editClient;
+        private System.Windows.Forms.Button tool_edit;
+        private System.Windows.Forms.Button tool_add;
     }
 }
 

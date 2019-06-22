@@ -2,8 +2,8 @@
 {
     public sealed class Tool
     {
-        public string Name { get; private set; }
         public int Id { get; private set; }
+        public string Name { get; private set; }
         public int Price { get; private set; }
         public string Note { get; private set; }
         public string PathToPicture { get; private set; }

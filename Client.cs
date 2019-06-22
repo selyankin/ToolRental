@@ -7,6 +7,8 @@ namespace ToolsRental
      */
     public sealed class Client
     {
+        public int Id { get; private set; }
+
         public string Name { get; private set; }
 
         public string Surname { get; private set; }
@@ -14,8 +16,6 @@ namespace ToolsRental
         public string Patronymic { get; private set; }
 
         public string Sex { get; private set; }
-
-        public int Id { get; private set; }
 
         public string City { get; private set; }
 
